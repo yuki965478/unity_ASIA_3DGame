@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &71783224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6894,7 +6894,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5580\u62C9\u5580\u62C9~\u65E9\u8D77\u8EAB\u9AD4\u597D......\u5580\u62C9\u5580\u62C9......\u54CE\u5440\u4E00\u628A\u8001\u9AA8\u982D\u4E86"
+  m_Text: OWO
 --- !u!222 &1385678118
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7134,7 +7134,10 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 9e6500f98d2e531448e9b275b3eb632b, type: 2}
   dialog: {fileID: 71783223}
   textContent: {fileID: 1385678117}
+  textName: {fileID: 2096407664}
+  interval: 0.1
   playerInArea: 0
+  state: 0
 --- !u!1001 &2090343897
 PrefabInstance:
   m_ObjectHideFlags: 0
