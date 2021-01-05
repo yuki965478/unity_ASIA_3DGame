@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
     public float stopDistance=2.5f;
     [Header("冷卻時間"), Range(0, 50)]
     public float cd = 2.5f;
+    [Header("攻擊中心點")]
+    public Transform atkPoint;
+    [Header("攻擊長度"),Range(0f,5f)]
+    public float atkLength;
 
     /// <summary>
     /// 計時器
@@ -38,6 +42,15 @@ public class Enemy : MonoBehaviour
         Track();
         Attack();
     }
+    private void OnDrawGizmos()
+    {
+        //圖示.顏色=紅色
+        Gizmos.color = Color.red;
+        //圖示.繪製設限(中心點，方向)
+        //(攻擊中心點的座標，攻擊中心點的前方*攻擊長度)
+        Gizmos.DrawRay(atkPoint.position, atkPoint.forward * atkLength);
+    }
+    private RaycastHit hit;
     /// <summary>
     /// 攻擊
     /// </summary>
@@ -59,6 +72,14 @@ public class Enemy : MonoBehaviour
             {
                 ani.SetTrigger("攻擊");
                 timer = 0;
+                //物理.設限碰撞(攻擊中心點的座標,攻擊中心點前方<攻擊長度,圖層)
+                //塗層：1<<圖層編號
+                //如果 設限 打到物件 就 執行{}
+               if( Physics.Raycast(atkPoint.position, atkPoint.forward, out hit,atkLength, 1 << 8))
+                {
+                    //碰到物件.取得元件<玩家>().受傷()
+                    hit.collider.GetComponent<Player>().Damage();
+                }
             }
         }
     }
